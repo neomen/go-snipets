@@ -18,6 +18,6 @@ func main() {
 
 	fmt.Printf("bool: %t\n", bool)
 
-	p := fasle
+	p := false
 	fmt.Printf("|%T|%v|%#v|\n", p, p, p)
 }

@@ -50,4 +50,9 @@ func main() {
 		fmt.Printf("end: %d\n", end)
 	}
 
+	//
+	str = "275/45R19"
+	reg = regexp.MustCompile(`([0-9])+`)
+	tire = reg.FindAllString(str, -1)
+	fmt.Print(tire)
 }
