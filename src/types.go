@@ -35,4 +35,23 @@ func main() {
 	var fl64 float64 = math.Sqrt(float64(x*x + y*y))
 	var z int = int(fl64)
 	fmt.Println(x, y, z)
+
+
+	// interface
+	fmt.Println("interface")
+	var v interface {}
+	v = 7
+
+	switch v.(type) {
+	case int, int8, int16, int32, int64:
+		fmt.Println("int")
+	case string:
+		fmt.Println("string")
+	}
+
+	n, ok := v.(int)
+	if ok {
+		fmt.Println(n)
+	}
+
 }
