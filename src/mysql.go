@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"time"
 )
 
 var (
@@ -26,9 +27,12 @@ type Fbc_brand struct {
 }
 
 func init() {
-	base := fmt.Sprintf("%s:%s@%s(%s:%d)/%s?charset=utf8", user, pass, protocol, address, port, dbname)
+	// parseTime https://github.com/go-sql-driver/mysql#parsetime
+	base := fmt.Sprintf("%s:%s@%s(%s:%d)/%s?charset=utf8&parseTime=true", user, pass, protocol, address, port, dbname)
 	orm.RegisterDriver("mysql", orm.DR_MySQL)
 	orm.RegisterDataBase("default", "mysql", base, maxIdle, maxConn)
+	// Timezone http://beego.me/docs/mvc/model/orm.md#timezone-config
+	orm.DefaultTimeLoc, _ = time.LoadLocation("Asia/Novosibirsk")
 
 	orm.RegisterModel(
 	new(Fbc_brand),
