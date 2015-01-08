@@ -54,5 +54,14 @@ func main() {
 	str = "275/45R19"
 	reg = regexp.MustCompile(`([0-9])+`)
 	tire = reg.FindAllString(str, -1)
-	fmt.Print(tire)
+	fmt.Println(tire)
+
+
+	//
+	// string pattern
+	re := regexp.MustCompile(`api.contact.([0-9]+).([0-9]+).([\w]+).([\w]+)`)
+	re2 := regexp.MustCompile(`api/contact/([0-9]+)/([0-9]+)/([\w]+)/([\w]+)`)
+
+	fmt.Printf("%q\n", re.FindString("api.contact.10.1.name.all"))
+	fmt.Printf("%q\n", re2.FindString("api/contact/10/1/name/all"))
 }
