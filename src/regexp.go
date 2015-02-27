@@ -59,9 +59,42 @@ func main() {
 
 	//
 	// string pattern
-	re := regexp.MustCompile(`api.contact.([0-9]+).([0-9]+).([\w]+).([\w]+)`)
-	re2 := regexp.MustCompile(`api/contact/([0-9]+)/([0-9]+)/([\w]+)/([\w]+)`)
+	re := regexp.MustCompile(`api.contact.[0-9]+.[0-9]+.name.all`)
+//	re2 := regexp.MustCompile(`api/contact/([0-9]+)/([0-9]+)/name/all`)
 
-	fmt.Printf("%q\n", re.FindString("api.contact.10.1.name.all"))
-	fmt.Printf("%q\n", re2.FindString("api/contact/10/1/name/all"))
+	fmt.Print("\n")
+	fmt.Print(re.FindAllString("api.contact.10.1.name.all", -1))
+	fmt.Print("\n")
+//	fmt.Print("\n")
+//	fmt.Printf("%q\n", re2.FindString("api/contact/10/1/name/all"))
+
+	matched, err := regexp.MatchString("foo.*", "seafood")
+	fmt.Println(matched, err)
+	fmt.Println(regexp.MatchString("(api.contact.[0-9]+.[0-9]+.name.all):(get)", "api.contact.10.1.name.all:get"))
+	fmt.Println(regexp.MatchString("(api.contact.[0-9]+.[0-9]+.name.all):(get)", "api.contact.10.1.name.all:post"))
+	fmt.Println(regexp.MatchString("(api.contact.[0-9]+.[0-9]+.name.all):(get)", "api.contact.10.1.name.all"))
+	fmt.Println(regexp.MatchString("(api.contact.[0-9]+.[0-9]+.name.all):(get)", "api.contact.10.1.name:get"))
+	fmt.Println(regexp.MatchString("api.contact.[0-9]+.[0-9]+.name.all:get", "api.contact.10.1.name.all:get"))
+	fmt.Println(regexp.MatchString("/api/post/[0-9//]*:get", "/api/post/:get"))
+	fmt.Println(regexp.MatchString("/api/catalog/tire/[0-9]+/[0-9]+/[a-z_-]+:get", "/api/catalog/tire/25/1/-create_time:get"))
+
+	// поиск и вывод
+	s := `get published first 10 entries from 'markdown' category`
+	fmt.Println(regexp.MatchString("get [a-z]+ [a-z]+ [0-9]+ entries from '[a-z]+' category", s))
+
+	entries := regexp.MustCompile(`([0-9]+) entries`)
+	num := entries.FindStringSubmatch(s)
+	fmt.Println(num[1])
+
+	category := regexp.MustCompile(`from '(.+)?' category`)
+	cat := category.FindStringSubmatch(s)
+	fmt.Println(cat[1])
+
+	command := strings.Split(regexp.MustCompile(`(.+)?`).FindAllString(s, -1)[0], " ")
+	fmt.Println(command)
+
+	s2 := `get by id 1,2,3,4,5`
+	fmt.Println(regexp.MatchString("get by id [0-9]+", s2))
+	ids := regexp.MustCompile(`([0-9]+)`).FindAllString(s2, -1)
+	fmt.Println(ids[3])
 }
