@@ -48,4 +48,9 @@ func main() {
 	if z == nil {
 		fmt.Println("nil!")
 	}
+
+	//[A C D E F]
+	s := []string{"A", "B", "C", "D", "E", "F"}
+	s = append(s[:1], s[2:] ...)
+	fmt.Println(s)
 }
