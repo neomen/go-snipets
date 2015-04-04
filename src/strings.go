@@ -20,4 +20,7 @@ func main() {
 
 	p := false
 	fmt.Printf("|%T|%v|%#v|\n", p, p, p)
+
+	fmt.Println("Hello World"[1])
+	fmt.Println(".png"[1:])
 }
