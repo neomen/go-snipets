@@ -23,4 +23,7 @@ func main() {
 
 	fmt.Println("Hello World"[1])
 	fmt.Println(".png"[1:])
+
+	command := "set a 1"
+	fmt.Println(command[4:])
 }

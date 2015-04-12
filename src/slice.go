@@ -51,6 +51,12 @@ func main() {
 
 	//[A C D E F]
 	s := []string{"A", "B", "C", "D", "E", "F"}
-	s = append(s[:1], s[2:] ...)
-	fmt.Println(s)
+	s1 := append(s[:1], s[2:] ...)
+	fmt.Println(s1)
+
+	//[B C D E F G]
+	j := []string{"A", "B", "C", "D", "E", "F"}
+	j = append(j, "G")
+	s2 := append(j[1:len(j)])
+	fmt.Println(s2)
 }
