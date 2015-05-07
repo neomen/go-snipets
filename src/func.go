@@ -51,6 +51,15 @@ func getUri(p params) string {
 	return baseUrl.String()
 }
 
+func sum(nums ...int) {
+	fmt.Print(nums, " ")
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	fmt.Println(total)
+}
+
 func main() {
 	fmt.Printf("Function add return: %d", add(42, 13))
 
@@ -76,5 +85,12 @@ func main() {
 	p.brand = "brand"
 	p.model = "model"
 	uri := getUri(p)
-	fmt.Printf("uri: %s", uri)
+	fmt.Printf("uri: %s\n", uri)
+
+
+	sum(1, 2)
+	sum(1, 2, 3)
+
+	nums := []int{1, 2, 3, 4}
+	sum(nums...)
 }
