@@ -97,4 +97,43 @@ func main() {
 	fmt.Println(regexp.MatchString("get by id [0-9]+", s2))
 	ids := regexp.MustCompile(`([0-9]+)`).FindAllString(s2, -1)
 	fmt.Println(ids[3])
+
+	text := "Edit the Expression & Text to see matches. Roll over matches or the expression for details. Undo mistakes with ctrl-z. Save & Share expressions [qwe:content] with friends or the Community. A full Reference & Help is available in the Library, or watch the [qqqw:content] video Tutorial."
+	reg = regexp.MustCompile(`(\[{1}[a-z]{2,64}\:content\]{1})`)
+	markers := reg.FindAllString(text, -1)
+	fmt.Println(markers)
+
+	s = `100.100.100.100 - - [23/Feb/2015:03:03:56 +0100] "GET /folder/file.mp3 HTTP/1.1" 206 5637064 "-" "AppleCoreMedia/1.0.0.12B466 (iPhone; U; CPU OS 8_1_3 like Mac OS X; da_dk)"`
+	reg, _ = regexp.Compile(`([.0-9]+) .*?\[([0-9a-zA-Z:\/+ ]+)\].*?"[A-Z]+ \/([^\/ ]+)\/([a-zA-Z0-9\-.]+).*" ([0-9]{3}) .*"(.*?)"$`)
+	a  := reg.FindStringSubmatch(s)
+	for index, match := range a {
+		fmt.Printf("[%d] %s\n", index, match)
+	}
+
+	s = `[body:content]`
+	reg, _ = regexp.Compile(`(\[{1})([a-z]{2,64})(\:)([content]+)([\]]{1})`)
+	b  := reg.FindStringSubmatch(s)
+	for index, match := range b {
+		fmt.Printf("[%d] %s\n", index, match)
+	}
+
+	// замена в тексте
+	background := `http:\/\/wordpress.loc\/wp-content\/uploads\/layerslider\/Previous-demo-slider-with-2D-transitions\/bg1.jpg`
+	background_reg, _ := regexp.Compile(`\\/`)
+	fmt.Println(background_reg.ReplaceAllString(background, `/`))
+
+	// замена в тексте
+	transition := "{\\\"offsetxin\\\":\\\"0\\\",\\\"offsetyin\\\":\\\"bottom\\\",\\\"durationin\\\":\\\"4600\\\",\\\"delayin\\\":\\\"0\\\",\\\"easingin\\\":\\\"easeOutQuad\\\",\\\"fadein\\\":false,\\\"rotatein\\\":\\\"-10\\\",\\\"rotatexin\\\":\\\"0\\\",\\\"rotateyin\\\":\\\"0\\\",\\\"transformoriginin\\\":\\\"50% 50% 0\\\",\\\"skewxin\\\":\\\"0\\\",\\\"skewyin\\\":\\\"0\\\",\\\"scalexin\\\":\\\"1.0\\\",\\\"scaleyin\\\":\\\"1.0\\\",\\\"offsetxout\\\":\\\"0\\\",\\\"offsetyout\\\":\\\"0\\\",\\\"durationout\\\":\\\"1500\\\",\\\"showuntil\\\":\\\"0\\\",\\\"easingout\\\":\\\"easeInOutQuint\\\",\\\"fadeout\\\":true,\\\"rotateout\\\":\\\"0\\\",\\\"rotatexout\\\":\\\"0\\\",\\\"rotateyout\\\":\\\"0\\\",\\\"transformoriginout\\\":\\\"50% 50% 0\\\",\\\"skewxout\\\":\\\"0\\\",\\\"skewyout\\\":\\\"0\\\",\\\"scalexout\\\":\\\"1.0\\\",\\\"scaleyout\\\":\\\"1.0\\\",\\\"parallaxlevel\\\":\\\"0\\\"}"
+	offsetxin, _ := regexp.Compile(`\\\"offsetxin\\\":\\\"([0-9]+)\\\"`)
+	fmt.Println(offsetxin.ReplaceAllString(transition, `\"offsetxin\":$1`))
+
+	// замена в тексте byte
+	styles := `{\\\"width\\\":\\\"100px\\\",\\\"height\\\":\\\"70px\\\",\\\"font-family\\\":\\\"Arial, sans-serif\\\",\\\"font-size\\\":\\\"40px\\\",\\\"line-height\\\":\\\"70px\\\",\\\"color\\\":\\\"white\\\",\\\"background\\\":\\\"#cf431d\\\",\\\"border-radius\\\":\\\"5\\\"}`
+	styles_reg, _ := regexp.Compile(`\\\\\\"`)
+	fmt.Println(string(styles_reg.ReplaceAll([]byte(styles), []byte(`\"`))))
+
+	// замена в тексте
+	post_taxonomy := `{"post_taxonomy": 0}`
+	post_taxonomy_reg, _ := regexp.Compile(`"post_taxonomy": ([0-9]+)`)
+	fmt.Println(post_taxonomy_reg.ReplaceAllString(post_taxonomy, `"post_taxonomy":"$1"`))
 }
