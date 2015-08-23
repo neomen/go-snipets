@@ -32,4 +32,12 @@ func main() {
 	str := "2015-04-08 21:27:52 +0700 +0700"
 	t3, _ := time.Parse(time.RFC1123Z, str)
 	p(t3)
+
+	fmt.Println(fmt.Sprintf("%d:%d %d/%d/%d", t.Hour(), t.Minute(), t.Day(), t.Month(), t.Year()))
+
+	// Ticker
+	c := time.Tick(1 * time.Second)
+	for now := range c {
+		fmt.Printf("%v %s\n", now, "qwe")
+	}
 }
