@@ -6,5 +6,9 @@ import (
 )
 
 func main() {
-	fmt.Printf("Math rand num = %d", rand.Int())
+	fmt.Printf("Math rand num = %d\n", rand.Int())
+
+	for i := 0; i<10; i++ {
+		fmt.Println(rand.Int())
+	}
 }
