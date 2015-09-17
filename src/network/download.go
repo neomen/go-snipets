@@ -8,8 +8,6 @@ import (
 	"io"
 	"encoding/hex"
 	http "net/http"
-	"github.com/pkg/sftp"
-	"os/exec"
 )
 
 func checkErr(err error) {
