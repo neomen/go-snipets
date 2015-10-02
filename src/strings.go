@@ -26,4 +26,10 @@ func main() {
 
 	command := "set a 1"
 	fmt.Println(command[4:])
+
+	printf := func(format string, a ...interface{}){
+		fmt.Println(fmt.Sprintf(format, a...))
+	}
+
+	printf("test %s, %d, %v", "string", 123, true)
 }
