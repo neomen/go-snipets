@@ -7,7 +7,7 @@ import (
 )
 
 func random(min, max int) int {
-	rand.Seed(time.Now().Unix())
+	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(max - min) + min
 }
 
@@ -18,6 +18,8 @@ func main() {
 		fmt.Println(rand.Int())
 	}
 
-	myrand := random(1, 99)
-	fmt.Println(myrand)
+	fmt.Println(random(1, 99))
+	fmt.Println(random(1, 99))
+	fmt.Println(random(1, 99))
+	fmt.Println(random(1, 99))
 }
