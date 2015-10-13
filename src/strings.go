@@ -32,4 +32,7 @@ func main() {
 	}
 
 	printf("test %s, %d, %v", "string", 123, true)
+
+	str = "Donec ante."
+	fmt.Println(str[:utf8.RuneCountInString(str)-1])
 }
