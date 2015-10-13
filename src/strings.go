@@ -35,4 +35,8 @@ func main() {
 
 	str = "Donec ante."
 	fmt.Println(str[:utf8.RuneCountInString(str)-1])
+
+	for i:=0;i<len(str);i++ {
+		fmt.Println(str[i:i+1])
+	}
 }
