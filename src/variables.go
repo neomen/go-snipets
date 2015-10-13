@@ -4,9 +4,16 @@ import "fmt"
 
 var i int
 var c, python, java = true, false, "no!"
-
 var (
 	array = [...]string{
+		"a",
+		"b",
+	}
+	array2 = [2]string{
+		"a",
+		"b",
+	}
+	array3 = []string{
 		"a",
 		"b",
 	}
