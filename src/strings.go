@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"unicode/utf8"
+	"github.com/fiam/gounidecode/unidecode"
+	"strings"
 )
 
 func main() {
@@ -39,4 +41,10 @@ func main() {
 	for i:=0;i<len(str);i++ {
 		fmt.Println(str[i:i+1])
 	}
+
+	// transliteration
+	str = "Количество байт в строках"
+	fmt.Println(strings.Replace(strings.ToLower(unidecode.Unidecode(str)), " ", "_", -1))
+
+
 }

@@ -59,4 +59,10 @@ func main() {
 	j = append(j, "G")
 	s2 := append(j[1:len(j)])
 	fmt.Println(s2)
+
+	// remove last
+	fmt.Println("remove last")
+	fmt.Println(p)
+	p = p[:len(p)-1]
+	fmt.Println(p)
 }
