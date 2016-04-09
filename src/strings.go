@@ -46,5 +46,11 @@ func main() {
 	str = "Количество байт в строках"
 	fmt.Println(strings.Replace(strings.ToLower(unidecode.Unidecode(str)), " ", "_", -1))
 
+	// https://habrastorage.org/files/6b3/ae5/fcb/6b3ae5fcbeaf49c480baca60f88e7d40.jp
+	str = "6b3ae5fcbeaf49c480baca60f88e7d40"
+	depth := 3
+	for i := 0; i<depth; i++ {
+		fmt.Println(str[i*3:(i+1)*3])
+	}
 
 }

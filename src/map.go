@@ -57,4 +57,10 @@ func main() {
 
 	v, ok := m["Answer"]
 	fmt.Println("The value:", v, "Present?", ok)
+
+	l := map[string]string{}
+	l["key"] = "value"
+	for key, value := range l {
+		fmt.Println("The key:", key, "value:", value)
+	}
 }
