@@ -63,4 +63,9 @@ func main() {
 	for key, value := range l {
 		fmt.Println("The key:", key, "value:", value)
 	}
+
+	// How to check if a map contains a key in go?
+	if val, ok := l["key2"]; ok {
+		fmt.Printf("key exist, %s\r\n", val)
+	}
 }
