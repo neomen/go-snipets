@@ -136,4 +136,12 @@ func main() {
 	post_taxonomy := `{"post_taxonomy": 0}`
 	post_taxonomy_reg, _ := regexp.Compile(`"post_taxonomy": ([0-9]+)`)
 	fmt.Println(post_taxonomy_reg.ReplaceAllString(post_taxonomy, `"post_taxonomy":"$1"`))
+
+	// поиск в тексте
+	sd := `Edit [body:body:cont-ent] the Expression & Text to see matches. [some] f [some:marker] sdf [body:content] Roll over matches or the expression for details`
+	reg, _ = regexp.CompilePOSIX(`\[{1}([a-zA-Z\-_:]*)\]{1}`)
+	bd  := reg.FindAllStringSubmatch(sd, -1)
+	for index, match := range bd {
+		fmt.Printf("[%d] %s\n", index, match)
+	}
 }
