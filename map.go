@@ -68,4 +68,24 @@ func main() {
 	if val, ok := l["key2"]; ok {
 		fmt.Printf("key exist, %s\r\n", val)
 	}
+
+	fmt.Print(`//////////////////
+// links
+//////////////////
+`)
+
+	var m1, m2 map[string]interface{}
+	m1 = make(map[string]interface{})
+	m2 = make(map[string]interface{})
+	m1["m1"] = "m1"
+	m2["m2"] = "m2"
+
+	fmt.Println(m1)
+	fmt.Println(m2)
+
+	m1 = m2
+	m2["m3"] = "m3"
+	m1["m4"] = "m4"
+	fmt.Println("m1",m1, &m1)
+	fmt.Println("m2",m2, &m2)
 }
