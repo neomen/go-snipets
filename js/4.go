@@ -46,14 +46,6 @@ func main() {
 	}
 
 
-	ctx.PushTimers()
-
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("Script: Recovered in f", r)
-		}
-	}()
-
 	result := ctx.SafeToString(-1)
 	fmt.Println("result:",result)
 }
