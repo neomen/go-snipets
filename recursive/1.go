@@ -43,9 +43,9 @@ func main(){
 
 	tree := &Tree{}
 	renderTreeRecursive(items, tree, "")
-	out, _ := json.Marshal(tree)
+	b, _ := json.MarshalIndent(tree, " ", "  ")
 
 
-	fmt.Println(string(out))
+	fmt.Println(string(b))
 }
 
