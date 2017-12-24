@@ -6,6 +6,18 @@ type Vertex struct {
 	X, Y int
 }
 
+func (Vertex) Test1() {
+	fmt.Println("test1")
+}
+
+func (c Vertex) Test2() {
+	fmt.Println("test2", c)
+}
+
+func (c *Vertex) Test3() {
+	fmt.Println("test3", c)
+}
+
 func main() {
 	fmt.Println(Vertex{1,2})
 
@@ -37,10 +49,17 @@ func main() {
 	// var t *T = new(T)
 	// or
 	// t := new(T)
-	fmt.Println("")
+	fmt.Println("\n--------")
 	fmt.Println("The new function")
 	g := new(Vertex)
 	fmt.Println(g)
+
+	fmt.Println("\n--------")
 	g.X, g.Y = 11, 9
 	fmt.Println(g)
+
+	fmt.Println("\n--------")
+	p.Test1()
+	p.Test2()
+	p.Test3()
 }
