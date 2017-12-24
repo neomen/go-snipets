@@ -65,4 +65,15 @@ func main() {
 	fmt.Println(p)
 	p = p[:len(p)-1]
 	fmt.Println(p)
+
+
+	foo := make([]int, 5)
+	foo[3] = 42
+	foo[4] = 100
+
+	bar  := foo[1:4]
+	bar[1] = 99
+
+
+	fmt.Println("foo", foo)
 }
