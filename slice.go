@@ -76,4 +76,7 @@ func main() {
 
 
 	fmt.Println("foo", foo)
+
+	asd := "427427XXXXXX3370"
+	fmt.Println(asd[:4])
 }

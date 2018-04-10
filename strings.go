@@ -5,6 +5,7 @@ import (
 	"unicode/utf8"
 	"github.com/fiam/gounidecode/unidecode"
 	"strings"
+	"net/url"
 )
 
 func main() {
@@ -53,4 +54,15 @@ func main() {
 		fmt.Println(str[i*3:(i+1)*3])
 	}
 
+	u, err := url.Parse("http%3A%2F%2Fwww.hehe.com%2F%E8%BF%85+%E9%9B%B7+hehe")
+	if err != nil {
+		fmt.Println("err:", err.Error())
+	}
+	fmt.Println(u.Path)
+
+	u2, err := url.QueryUnescape("http%3A%2F%2Fwww.hehe.com%2F%E8%BF%85+%E9%9B%B7+hehe")
+	fmt.Println(u2)
+
+	res := "123"
+	fmt.Println(res[2:3])
 }
